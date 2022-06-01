@@ -2,7 +2,25 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import HomeView from "../views/HomeView.vue";
 
+// import store from "@/store/index.js";
+
 Vue.use(VueRouter);
+
+// const onlyAuthUser = async (to, from, next) => {
+//   // console.log(store);
+//   const checkUserInfo = store.getters["memberStore/checkUserInfo"];
+//   const getUserInfo = store._actions["memberStore/getUserInfo"];
+//   let token = sessionStorage.getItem("access-token");
+//   if (checkUserInfo == null && token) {
+//     await getUserInfo(token);
+//   }
+//   if (checkUserInfo === null) {
+//     alert("로그인이 필요한 페이지입니다..");
+//     router.push({ name: "signIn" });
+//   } else {
+//     next();
+//   }
+// };
 
 const routes = [
   {
@@ -11,13 +29,10 @@ const routes = [
     component: HomeView,
   },
   {
-    path: "/about",
-    name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+    path: "/student",
+    name: "student",
+    component: () => import("@/views/StudentView.vue"),
+    children: [],
   },
 ];
 
